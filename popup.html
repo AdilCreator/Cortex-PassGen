@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00f2ff;
+      --bg: #0a0b10;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --border: rgba(0, 242, 255, 0.3);
+    }
+
+    body {
+      width: 320px;
+      padding: 0;
+      background-color: var(--bg);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Real UI rounded corners */
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      margin: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+
+    h3 {
+      margin: 0 0 20px 0;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .option {
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .label-box { display: flex; align-items: center; gap: 8px; color: #bbb; }
+    .material-icons { font-size: 18px; color: var(--primary); }
+
+    input[type="number"] {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--primary);
+      padding: 5px;
+      width: 50px;
+      text-align: center;
+    }
+
+    #strength-container { margin: 15px 0; }
+    .strength-bar-bg { height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+    #strength-bar { width: 0%; height: 100%; transition: 0.5s ease; background: #ff4444; }
+
+    #result {
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      border: 1px dashed var(--border);
+      font-family: 'Courier New', monospace;
+      color: var(--primary);
+      text-align: center;
+      word-break: break-all;
+      text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--primary);
+      color: var(--bg);
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    }
+
+    .footer { margin-top: 20px; font-size: 10px; text-align: center; color: #666; }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Cortex PassGen</h3>
+    
+    <div class="option">
+      <div class="label-box"><i class="material-icons">straighten</i> <span>Total Length (Max 150)</span></div>
+      <input type="number" id="length" value="16" min="4" max="150">
+    </div>
+    
+    <div class="option">
+      <div class="label-box"><i class="material-icons">title</i> <span>Capital Letters</span></div>
+      <input type="checkbox" id="upper" checked>
+    </div>
+    
+    <div class="option">
+      <div class="label-box"><i class="material-icons">text_fields</i> <span>Small Letters</span></div>
+      <input type="checkbox" id="lower" checked>
+    </div>
+    
+    <div class="option">
+      <div class="label-box"><i class="material-icons">pin</i> <span>Numbers</span></div>
+      <input type="checkbox" id="numbers" checked>
+    </div>
+    
+    <div class="option">
+      <div class="label-box"><i class="material-icons">emergency</i> <span>Symbols</span></div>
+      <input type="checkbox" id="symbols">
+    </div>
+
+    <div id="strength-container">
+      <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+        <span>Strength:</span> <span id="strength-label">---</span>
+      </div>
+      <div class="strength-bar-bg"><div id="strength-bar"></div></div>
+    </div>
+
+    <div id="result">AWAITING_INPUT</div>
+    <button id="generate">Initialize</button>
+
+    <div class="footer">
+      Updated May 9, 2026<br>
+      <a href="https://github.com/AdilCraetor/Cortex-PassGen/" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
